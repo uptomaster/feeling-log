@@ -28,7 +28,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/new" element={<New />} />
-      <Route path="/diary" element={<Diary />} />
+      <Route path="/diary/:id" element={<Diary />} />
       {/* 와일드카드 => 위에 세개가 다 아니라면 NotFound로 렌더링 */}
       <Route path="*" element={<NotFound/>} /> 
     </Routes>
