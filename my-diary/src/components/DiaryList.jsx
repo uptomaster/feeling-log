@@ -16,13 +16,15 @@ const DiaryList = ({data}) => {
   const getSortedDate = ()=>{
     return data.toSorted((a,b)=>{
       if(sortType==='oldest'){
-        return a.createdDate - b.createdDate;
+        return Number(a.createdDate) - Number(b.createdDate);
       }
       else{
-        return b.createdDate - a.createdDate;
+        return Number(b.createdDate) - Number(a.createdDate);
       }
     });
   }
+
+  const sortedData = getSortedDate();
 
   return (
     <div className="DiaryList">
@@ -32,9 +34,9 @@ const DiaryList = ({data}) => {
           <option value={"oldest"}>오래된순</option>
         </select>
         <Button onClick={()=> nav("/new")} text={"새 일기 쓰기"} type={"POSITIVE"} />
-      </div>
+      </div> 
       <div className="list_wrapper">
-        {data.map((item)=><DiaryItem key={item.id} {...item}/>)}
+        {sortedData.map((item)=><DiaryItem key={item.id} {...item}/>)}
       </div>
     </div>
   );
